@@ -9,6 +9,7 @@ import avtoProject.repository.RoleRepository;
 import avtoProject.repository.UserRepository;
 import avtoProject.service.UserService;
 import avtoProject.service.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +29,8 @@ public class JpaUserService implements UserService {
         this.roleRepository = roleRepository;
     }
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private final RoleRepository roleRepository;
 
