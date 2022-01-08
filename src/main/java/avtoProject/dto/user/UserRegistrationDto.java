@@ -4,21 +4,17 @@ import avtoProject.entity.Role;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Set;
 
 @Setter
 @Getter
-public class UserCreateDto {
+public class UserRegistrationDto {
     private final String login;
 
     private String password;
 
-    private Set<Role> roles;
-
-    public UserCreateDto(String login, String password, Set<Role> roles) {
+    public UserRegistrationDto(String login, String password) {
         this.login = login;
         this.password = password;
-        this.roles = roles;
     }
 }

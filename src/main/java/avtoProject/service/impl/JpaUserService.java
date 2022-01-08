@@ -1,7 +1,7 @@
 package avtoProject.service.impl;
 
 import avtoProject.dto.authorization.UserAuthorizationInfoDto;
-import avtoProject.dto.user.UserCreateDto;
+import avtoProject.dto.user.UserRegistrationDto;
 import avtoProject.dto.user.UserDto;
 import avtoProject.entity.Role;
 import avtoProject.entity.UserAvto;
@@ -53,18 +53,14 @@ public class JpaUserService implements UserService {
 
 
     @Transactional
-    public boolean registrationUser(UserCreateDto userCreateDto) {
-        if (userCreateDto.getRoles() == null) {
-            userCreateDto.setRoles(Collections.singleton(new Role(2, "user")));
-        }
-        userCreateDto.setPassword(bCryptPasswordEncoder.encode(userCreateDto.getPassword()));
-        UserAvto userAvto = new UserAvto(
-                userCreateDto.getLogin(),
-                userCreateDto.getPassword(),
-                userCreateDto.getRoles()
+    public boolean registrationUser(UserRegistrationDto userRegistrationDto) {
+      UserAvto userAvto = new UserAvto(
+                userRegistrationDto.getLogin(),
+                userRegistrationDto.getPassword()
         );
-        userRepository.save(userAvto);
-        return true;
+      userAvto.setRoles(Collections.singleton(new Role(2, "user")));
+      userRepository.save(userAvto);
+      return true;
     }
 
 

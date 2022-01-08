@@ -28,10 +28,9 @@ public class UserAvto implements UserDetails {
 
     private String password;
 
-    public UserAvto(String login, String password, Set<Role> roles) {
+    public UserAvto(String login, String password) {
         this.login = login;
         this.password = password;
-        this.roles = roles;
     }
 
     @ManyToMany

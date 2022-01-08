@@ -1,8 +1,7 @@
 package avtoProject.controller;
 
-import avtoProject.dto.user.UserCreateDto;
+import avtoProject.dto.user.UserRegistrationDto;
 import avtoProject.dto.user.UserDto;
-import avtoProject.entity.UserAvto;
 import avtoProject.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +20,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void Registration(@RequestBody UserCreateDto userCreateDto) {
-        userService.registrationUser(userCreateDto);
+    public void Registration(@RequestBody UserRegistrationDto userRegistrationDto) {
+        userService.registrationUser(userRegistrationDto);
     }
 
     @GetMapping
