@@ -28,10 +28,15 @@ public class UserAvto implements UserDetails {
 
     private String password;
 
-    public UserAvto(String login, String password) {
+    public UserAvto(String login, String password, Set<Role> roles) {
         this.login = login;
         this.password = password;
+        this.roles = roles;
     }
+
+    public UserAvto() {
+    }
+
 
     @ManyToMany
     @JoinTable(name = "user_role", schema = "avto",

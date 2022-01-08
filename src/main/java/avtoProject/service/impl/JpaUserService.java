@@ -53,12 +53,12 @@ public class JpaUserService implements UserService {
 
     @Transactional
     public boolean registrationUser(UserRegistrationDto userRegistrationDto) {
-        userRegistrationDto.setPassword(bCryptPasswordEncoder.encode(userRegistrationDto.getPassword()));
+
       UserAvto userAvto = new UserAvto(
-                userRegistrationDto.getLogin(),
-                userRegistrationDto.getPassword()
+              userRegistrationDto.getLogin(),
+              bCryptPasswordEncoder.encode(userRegistrationDto.getPassword()),
+              Collections.singleton(new Role(2, "user"))
         );
-      userAvto.setRoles(Collections.singleton(new Role(2, "user")));
       userRepository.save(userAvto);
       return true;
     }

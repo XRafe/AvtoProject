@@ -2,7 +2,6 @@ package avtoProject.service.authorization;
 
 import avtoProject.repository.UserRepository;
 import avtoProject.service.UserService;
-import lombok.var;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

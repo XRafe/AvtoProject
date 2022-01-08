@@ -2,14 +2,16 @@ package avtoProject.dto.user;
 
 import avtoProject.entity.Role;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
 
 @Setter
 @Getter
+@NoArgsConstructor
 public class UserRegistrationDto {
-    private final String login;
+    private String login;
 
     private String password;
 

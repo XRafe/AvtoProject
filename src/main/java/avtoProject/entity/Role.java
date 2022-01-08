@@ -16,6 +16,12 @@ import java.util.Set;
 @Table(name = "role", schema = "avto")
 public class Role implements GrantedAuthority {
 
+    @Id
+    private Integer id;
+
+    private String code;
+
+
     public Role() {
 
     }
@@ -24,11 +30,6 @@ public class Role implements GrantedAuthority {
         this.id = id;
         this.code = code;
     }
-
-    @Id
-    private Integer id;
-
-    private String code;
 
 
     @ManyToMany(mappedBy = "roles")
