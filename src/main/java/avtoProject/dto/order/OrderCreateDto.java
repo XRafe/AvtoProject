@@ -10,17 +10,17 @@ public class OrderCreateDto {
 
     private final Integer sum;
 
-    private final Integer model_id;
+    private final Integer modelId;
 
-    private final Integer user_id;
+    private final Integer userId;
 
     public OrderCreateDto(@JsonProperty("count") Integer count,
                           @JsonProperty("sum") Integer sum,
-                          @JsonProperty("user_id") Integer user_id,
-                          @JsonProperty("model_id") Integer model_id) {
+                          @JsonProperty("userId") Integer userId,
+                          @JsonProperty("modelId") Integer modelId) {
         this.count = count;
         this.sum = sum;
-        this.user_id = user_id;
-        this.model_id = model_id;
+        this.userId = userId;
+        this.modelId = modelId;
     }
 }

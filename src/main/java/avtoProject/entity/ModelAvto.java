@@ -21,17 +21,17 @@ public class ModelAvto {
 
 
     @Column(name = "id_firm")
-    private Integer firm_id;
+    private Integer firmId;
 
 
     public ModelAvto() {
 
     }
 
-    public ModelAvto(String model, Integer price, Integer firm_id) {
+    public ModelAvto(String model, Integer price, Integer firmId) {
         this.model = model;
         this.price = price;
-        this.firm_id = firm_id;
+        this.firmId = firmId;
     }
 
     @Getter

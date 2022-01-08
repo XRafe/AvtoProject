@@ -21,10 +21,10 @@ public class OrderAvto {
 
 
     @Column(name = "id_user")
-    private Integer user_id;
+    private Integer userId;
 
     @Column(name = "id_model")
-    private Integer model_id;
+    private Integer modelId;
 
 
     public OrderAvto() {
@@ -32,11 +32,11 @@ public class OrderAvto {
     }
 
 
-    public OrderAvto(Integer count, Integer sum, Integer user_id, Integer model_id) {
+    public OrderAvto(Integer count, Integer sum, Integer userId, Integer modelId) {
         this.count = count;
         this.sum = sum;
-        this.user_id = user_id;
-        this.model_id = model_id;
+        this.userId = userId;
+        this.modelId = modelId;
     }
 
     @Getter

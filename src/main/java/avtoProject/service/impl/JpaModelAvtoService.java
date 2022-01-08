@@ -43,7 +43,7 @@ public class JpaModelAvtoService implements ModelAvtoService {
         ModelAvto modelAvto = modelAvtoFactory.build(
                 modelAvtoCreateDto.getModel(),
                 modelAvtoCreateDto.getPrice(),
-                modelAvtoCreateDto.getFirm_id()
+                modelAvtoCreateDto.getFirmId()
         );
         modelAvto = modelAvtoRepository.saveAndFlush(modelAvto);
 

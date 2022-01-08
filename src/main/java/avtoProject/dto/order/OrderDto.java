@@ -12,16 +12,16 @@ public class OrderDto {
 
     private final Integer sum;
 
-    private final Integer model_id;
+    private final Integer modelId;
 
-    private final Integer user_id;
+    private final Integer userId;
 
 
-    public OrderDto(Integer id, Integer count, Integer sum, Integer model_id, Integer user_id) {
+    public OrderDto(Integer id, Integer count, Integer sum, Integer modelId, Integer userId) {
         this.id = id;
         this.count = count;
         this.sum = sum;
-        this.model_id = model_id;
-        this.user_id = user_id;
+        this.modelId = modelId;
+        this.userId = userId;
     }
 }

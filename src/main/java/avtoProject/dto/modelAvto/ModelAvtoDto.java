@@ -11,12 +11,12 @@ public class ModelAvtoDto {
 
     private final Integer price;
 
-    private final Integer firm_id;
+    private final Integer firmId;
 
-    public ModelAvtoDto(Integer id, String model, Integer price, Integer firm_id) {
+    public ModelAvtoDto(Integer id, String model, Integer price, Integer firmId) {
         this.id = id;
         this.model = model;
         this.price = price;
-        this.firm_id = firm_id;
+        this.firmId = firmId;
     }
 }

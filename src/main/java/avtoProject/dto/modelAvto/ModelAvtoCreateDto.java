@@ -10,13 +10,13 @@ public class ModelAvtoCreateDto {
 
     private final Integer price;
 
-    private final Integer firm_id;
+    private final Integer firmId;
 
     public ModelAvtoCreateDto(@JsonProperty("model") String model,
                               @JsonProperty("price") Integer price,
-                              @JsonProperty("firm_id") Integer firm_id) {
+                              @JsonProperty("firm_id") Integer firmId) {
         this.model = model;
         this.price = price;
-        this.firm_id = firm_id;
+        this.firmId = firmId;
     }
 }

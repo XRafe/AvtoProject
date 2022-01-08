@@ -40,8 +40,8 @@ public class JpaOrderService implements OrderService {
         OrderAvto order = orderFactory.build(
                 orderCreateDto.getCount(),
                 orderCreateDto.getSum(),
-                orderCreateDto.getModel_id(),
-                orderCreateDto.getUser_id()
+                orderCreateDto.getModelId(),
+                orderCreateDto.getUserId()
         );
         order = orderRepository.saveAndFlush(order);
 

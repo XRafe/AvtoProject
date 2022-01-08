@@ -17,7 +17,7 @@ create table avto.useravto
 (
     id         int IDENTITY(1,1) primary key ,
     login      varchar(30)     not null,
-    password   varchar(30)     not null
+    password   varchar(80)     not null
 );
 
 create table avto.orderavto
