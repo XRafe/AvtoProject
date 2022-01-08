@@ -16,8 +16,8 @@ public class OrderMapper {
                 model.getId(),
                 model.getCount(),
                 model.getSum(),
-                model.getModel_id(),
-                model.getUser_id()
+                model.getModelId(),
+                model.getUserId()
         );
     }
 

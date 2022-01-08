@@ -16,7 +16,7 @@ public class ModelAvtoMapper {
                 model.getId(),
                 model.getModel(),
                 model.getPrice(),
-                model.getFirm_id()
+                model.getFirmId()
         );
     }
 

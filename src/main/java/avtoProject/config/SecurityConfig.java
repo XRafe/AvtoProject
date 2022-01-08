@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .antMatchers("/modelavto").not().fullyAuthenticated()
                 .antMatchers("/firmavto").not().fullyAuthenticated()
                 .antMatchers("/order").permitAll()
-                .antMatchers("/user").not().fullyAuthenticated()
+                .antMatchers("/user").hasRole("admin")
                 .antMatchers("/register").not().fullyAuthenticated();
         http.csrf().disable();
 
