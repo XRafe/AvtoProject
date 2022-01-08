@@ -29,8 +29,7 @@ public class JpaUserService implements UserService {
         this.roleRepository = roleRepository;
     }
 
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     private final RoleRepository roleRepository;
 
@@ -54,6 +53,7 @@ public class JpaUserService implements UserService {
 
     @Transactional
     public boolean registrationUser(UserRegistrationDto userRegistrationDto) {
+        userRegistrationDto.setPassword(bCryptPasswordEncoder.encode(userRegistrationDto.getPassword()));
       UserAvto userAvto = new UserAvto(
                 userRegistrationDto.getLogin(),
                 userRegistrationDto.getPassword()
