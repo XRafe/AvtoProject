@@ -1,18 +1,12 @@
 package avtoproject.config;
 
 import avtoproject.service.authorization.JpaUserDetailsService;
-import avtoproject.service.impl.JpaUserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -22,12 +16,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
-    @Autowired
-    JpaUserDetailsService jpaUserDetailsService;
+    private static final String[] WHITELIST_FOR_SWAGGER = {
+            "/v3/api-docs",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/swagger-ui/**",
+            "/webjars/**"
+    };
 
-    @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
+    private final JpaUserDetailsService jpaUserDetailsService;
+
+    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService) {
+        this.jpaUserDetailsService = jpaUserDetailsService;
     }
 
     @Override
@@ -39,11 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/modelavto").not().fullyAuthenticated()
-                .antMatchers("/firmavto").not().fullyAuthenticated()
-                .antMatchers("/order").permitAll()
-                .antMatchers("/user").not().fullyAuthenticated()
-                .antMatchers("/register").not().fullyAuthenticated();
+                .antMatchers(WHITELIST_FOR_SWAGGER).permitAll()
+                .antMatchers("/users/registration").permitAll()
+                .antMatchers("/**").authenticated();
+
         http.csrf().disable();
 
         http.formLogin();
