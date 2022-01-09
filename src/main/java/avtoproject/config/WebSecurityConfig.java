@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     private static final String[] WHITELIST_FOR_SWAGGER = {
             "/v3/api-docs",
@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     private final JpaUserDetailsService jpaUserDetailsService;
 
-    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService) {
+    public WebSecurityConfig(JpaUserDetailsService jpaUserDetailsService) {
         this.jpaUserDetailsService = jpaUserDetailsService;
     }
 
