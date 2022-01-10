@@ -22,13 +22,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
-    @Autowired
-    JpaUserDetailsService jpaUserDetailsService;
+    private final JpaUserDetailsService jpaUserDetailsService;
 
-    @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
+    public SecurityConfig(JpaUserDetailsService jpaUserDetailsService) {
+        this.jpaUserDetailsService = jpaUserDetailsService;
     }
+
+    private static final String[] WHITELIST_FOR_SWAGGER = {
+            "/v3/api-docs",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/swagger-ui/**",
+            "/webjars/**"
+    };
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -39,11 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/modelavto").not().fullyAuthenticated()
-                .antMatchers("/firmavto").not().fullyAuthenticated()
-                .antMatchers("/order").permitAll()
-                .antMatchers("/user").not().fullyAuthenticated()
-                .antMatchers("/register").not().fullyAuthenticated();
+                .antMatchers(WHITELIST_FOR_SWAGGER).permitAll()
+                .antMatchers("/users/registration").permitAll()
+                .antMatchers("/**").authenticated();
+
         http.csrf().disable();
 
         http.formLogin();

@@ -21,20 +21,21 @@ import java.util.stream.Collectors;
 
 @Service
 public class JpaUserService implements UserService  {
-    public JpaUserService(RoleRepository roleRepository, UserRepository userRepository, UserMapper userMapper) {
-        this.roleRepository = roleRepository;
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
 
-    @Autowired
-    private PasswordEncoder encoder;
+    private final PasswordEncoder encoder;
 
     private final RoleRepository roleRepository;
 
     private final UserRepository userRepository;
 
     private final UserMapper userMapper;
+
+    public JpaUserService(PasswordEncoder encoder, RoleRepository roleRepository, UserRepository userRepository, UserMapper userMapper) {
+        this.encoder = encoder;
+        this.roleRepository = roleRepository;
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+    }
 
     @Override
     public Integer getId(String login) {
