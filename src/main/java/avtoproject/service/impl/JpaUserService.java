@@ -5,11 +5,9 @@ import avtoproject.dto.user.UserDto;
 import avtoproject.dto.user.UserRegistrationDto;
 import avtoproject.entity.Role;
 import avtoproject.entity.UserAvto;
-import avtoproject.repository.RoleRepository;
 import avtoproject.repository.UserRepository;
 import avtoproject.service.UserService;
 import avtoproject.service.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,16 +19,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class JpaUserService implements UserService  {
-    public JpaUserService(RoleRepository roleRepository, UserRepository userRepository, UserMapper userMapper) {
-        this.roleRepository = roleRepository;
+    public JpaUserService(PasswordEncoder encoder, UserRepository userRepository, UserMapper userMapper) {
+        this.encoder = encoder;
         this.userRepository = userRepository;
         this.userMapper = userMapper;
     }
 
-    @Autowired
-    private PasswordEncoder encoder;
-
-    private final RoleRepository roleRepository;
+    private final PasswordEncoder encoder;
 
     private final UserRepository userRepository;
 
