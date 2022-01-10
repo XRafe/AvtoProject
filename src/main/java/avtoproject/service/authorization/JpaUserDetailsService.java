@@ -1,6 +1,5 @@
 package avtoproject.service.authorization;
 
-import avtoproject.repository.UserRepository;
 import avtoproject.service.UserService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

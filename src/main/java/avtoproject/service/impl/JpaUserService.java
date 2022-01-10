@@ -9,7 +9,6 @@ import avtoproject.repository.RoleRepository;
 import avtoproject.repository.UserRepository;
 import avtoproject.service.UserService;
 import avtoproject.service.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +19,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class JpaUserService implements UserService  {
+public class JpaUserService implements UserService {
 
     private final PasswordEncoder encoder;
 
@@ -55,13 +54,13 @@ public class JpaUserService implements UserService  {
     @Override
     public boolean registrationUser(UserRegistrationDto userRegistrationDto) {
 
-      UserAvto userAvto = new UserAvto(
-              userRegistrationDto.getLogin(),
-              encoder.encode(userRegistrationDto.getPassword()),
-              Collections.singleton(new Role(2, "user"))
+        UserAvto userAvto = new UserAvto(
+                userRegistrationDto.getLogin(),
+                encoder.encode(userRegistrationDto.getPassword()),
+                Collections.singleton(new Role(2, "user"))
         );
-      userRepository.save(userAvto);
-      return true;
+        userRepository.save(userAvto);
+        return true;
     }
 
 

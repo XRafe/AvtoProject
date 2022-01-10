@@ -1,4 +1,3 @@
-
 package avtoproject.config;
 
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,7 @@
 package avtoproject.controller;
 
-import avtoproject.dto.user.UserRegistrationDto;
 import avtoproject.dto.user.UserDto;
+import avtoproject.dto.user.UserRegistrationDto;
 import avtoproject.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
